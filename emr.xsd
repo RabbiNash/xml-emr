@@ -16,7 +16,7 @@
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="age" type="xs:integer"/>
-            <xs:element name="weight" type="xs:decimal">
+            <xs:element name="weight" type="xs:decimal"/>
             <xs:element ref="medicalHistory"/>
             <xs:element ref="billingInfo"/>
         </xs:sequence>
@@ -47,7 +47,7 @@
     <xs:complexType>
         <xs:sequence>
             <xs:element name="title"  type="xs:string"/>
-            <xs:element name="status" type="xs:string">
+            <xs:element name="status" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -56,8 +56,8 @@
     <xs:complexType>
         <xs:sequence>
             <xs:element name="title" type="xs:string"/>
-            <xs:element name="attendingPhysician" type="xs:string">
-            <xs:element name="prescription" type="xs:string">
+            <xs:element name="attendingPhysician" type="xs:string"/>
+            <xs:element name="prescription" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -88,8 +88,8 @@
         <xs:sequence>
             <xs:element name="cost" type="xs:decimal"/>
             <xs:element maxOccurs = "unbounded" name="item" type="xs:string"/>
-            <xs:element name="issuedBy" type="xs:string">
-            <xs:element name="handledBy" type="xs:string">
+            <xs:element name="issuedBy" type="xs:string"/>
+            <xs:element name="handledBy" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
