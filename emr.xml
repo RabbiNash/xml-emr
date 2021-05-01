@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emr>
+    <member>
+        <name>Tinashe</name>
+        <age>26</age>
+        <weight>63.30</weight>
+        <medicalHistory>
+            <medication>
+                <name>Paracetamol</name>
+            </medication>
+            <medication>
+                <name>Ibuprofen</name>
+            </medication>
+            <immunisation>
+                <title>Covid  19</name>
+                <status>Fully vaccinated</status>
+            </immunisation>
+            <consultation>
+                <title>Cough Consultation</title>
+                <attendingPhysician>Tinashe</attendingPhysician>
+                <prescription>pr123</prescription>
+            </consultation>
+            <prescription id = "pr123">
+                <cost>9.0</cost>
+                <item>Paracetamol</item>
+                <item>Ibuprofen</item>
+                <issuedBy>phy123</issuedBy>
+                <handledBy>emp123</handledBy>
+            </prescription>
+        </medicalHistory>
+    </member>
+
+    <physician  id = "phy123">
+        <name>Jahmna</name>
+        <speciality>GP</speciality>
+    </physician>
+
+    <employee id ="emp123">
+        <name>John Doe</name>
+    </employee>
+</emr>
