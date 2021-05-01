@@ -17,8 +17,8 @@
             <xs:element name="name" type="xs:string"/>
             <xs:element name="age" type="xs:integer"/>
             <xs:element name="weight" type="xs:decimal">
-            <xs:element maxOccurs="1" ref="medicalHistory"/>
-            <xs:element maxOccurs="1" ref="billingInfo"/>
+            <xs:element ref="medicalHistory"/>
+            <xs:element ref="billingInfo"/>
         </xs:sequence>
         <xs:attribute name="id" use="required" type="xs:string"/>
     </xs:complexType>
@@ -27,9 +27,10 @@
 <xs:element name="medicalHistory">
     <xs:complexType>
         <xs:sequence>
-            <xs:element ref="medication"/>
-            <xs:element ref="immunisation"/>
-            <xs:element ref="consultation"/>
+            <xs:element  maxOccurs="unbounded" ref="medication"/>
+            <xs:element  maxOccurs="unbounded" ref="immunisation"/>
+            <xs:element  ref="consultation"/>
+            <xs:element  ref="prescription"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -37,7 +38,7 @@
 <xs:element name="medication">
     <xs:complexType>
         <xs:sequence>
-            <xs:element name = "medname"  type = "xs:string"/>
+            <xs:element name = "name"  type = "xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -117,7 +118,7 @@
     <xs:complexType>
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
-            <xs:element name="specialist" type="xs:boolean"/>
+            <xs:element name="specialty" type="xs:string"/>
         </xs:sequence>
     <xs:attribute name="id" use="required" type="xs:string"/>
 </xs:element>
