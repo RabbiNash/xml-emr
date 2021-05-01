@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="emr">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="member"/>
+            <xs:element maxOccurs="unbounded" ref="physician"/>
+            <xs:element maxOccurs="unbounded" ref="employee"/>
+      </xs:sequence>
+    </xs:complexType>
+</xs:element>   
+
+<xs:element name="member">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:integer"/>
+            <xs:element name="weight" type="xs:decimal">
+            <xs:element maxOccurs="1" ref="medicalHistory"/>
+            <xs:element maxOccurs="1" ref="billingInfo"/>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="xs:string"/>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="medicalHistory">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="medication"/>
+            <xs:element ref="immunisation"/>
+            <xs:element ref="consultation"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="medication">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name = "medname"  type = "xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="immunisation">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="title"  type="xs:string"/>
+            <xs:element name="status" type="xs:string">
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="consultation">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="attendingPhysician" type="xs:string">
+            <xs:element name="prescription" type="xs:string">
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:key name="PhysicianKey"  >  
+        <xs:selector xpath=".//Physician" />  
+        <xs:field xpath="id" />  
+    </xs:key>  
+
+    <xs:keyref name="PhysicianRef" refer="PhysicianKey">  
+        <xs:selector xpath=".//consultation" />  
+        <xs:field xpath="attendingPhysician" />  
+    </xs:keyref>  
+
+    <xs:key name="prescriptionKey"  >  
+        <xs:selector xpath=".//prescription" />  
+        <xs:field xpath="id" />  
+    </xs:key>  
+
+    <xs:keyref name="prescriptionRef" refer="prescriptionKey">  
+        <xs:selector xpath=".//consultation" />  
+        <xs:field xpath="prescription" />  
+    </xs:keyref>  
+
+</xs:element>
+
+<xs:element name="prescription">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="cost" type="xs:decimal"/>
+            <xs:element maxOccurs = "unbounded" name="item" type="xs:string"/>
+            <xs:element name="issuedBy" type="xs:string">
+            <xs:element name="handledBy" type="xs:string">
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:key name="PhysicianKey"  >  
+        <xs:selector xpath=".//Physician" />  
+        <xs:field xpath="id" />  
+    </xs:key>  
+
+    <xs:keyref name="PhysicianRef" refer="PhysicianKey">  
+        <xs:selector xpath=".//prescription" />  
+        <xs:field xpath="issuedBy" />  
+    </xs:keyref> 
+
+    <xs:key name="EmployeeKey"  >  
+        <xs:selector xpath=".//employee" />  
+        <xs:field xpath="id" />  
+    </xs:key>  
+
+    <xs:keyref name="EmployeeRef" refer="EmployeeKey">  
+        <xs:selector xpath=".//employee" />  
+        <xs:field xpath="handledBy" />  
+    </xs:keyref> 
+</xs:element>
+
+<xs:element name="physician">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="specialist" type="xs:boolean"/>
+        </xs:sequence>
+    <xs:attribute name="id" use="required" type="xs:string"/>
+</xs:element>
+
+<xs:element name="employee">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" use="required" type="xs:string"/>
+    </xs:complexType>
+</xs:element>
+</xs:schema>
