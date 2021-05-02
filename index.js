@@ -1,3 +1,4 @@
+const XML_SCHEMA = `
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
@@ -138,3 +139,13 @@
     </xs:complexType>
 </xs:element>
 </xs:schema>
+`;
+ 
+const Xsd2JsonSchema = require('xsd2jsonschema').Xsd2JsonSchema;
+const xs2js = new Xsd2JsonSchema();
+ 
+const convertedSchemas = xs2js.processAllSchemas({
+    schemas: {'emr.xsd': XML_SCHEMA}
+});
+const jsonSchema = convertedSchemas['emr.xsd'].getJsonSchema();
+console.log(JSON.stringify(jsonSchema, null, 2));

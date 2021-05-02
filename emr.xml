@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <emr>
     <member id="mem123">
-        <name>Tinashe</name>
+        <firstname>Tinashe</firstname>
+        <lastname>Makuti</lastname>
+        <gender>male</gender>
         <age>26</age>
         <weight>63.30</weight>
+        <dob>20/03/1993</dob>
+        <address>Chemin De Saint Claude</address>
+        <phonenumber>234298484</phonenumber>
         <medicalHistory>
             <medication>
                 <name>Paracetamol</name>
@@ -17,7 +22,7 @@
             </immunisation>
             <consultation>
                 <title>Cough Consultation</title>
-                <attendingPhysician>Tinashe</attendingPhysician>
+                <attendingPhysician>phy123</attendingPhysician>
                 <prescription>pr123</prescription>
             </consultation>
             <prescription id = "pr123">
@@ -32,7 +37,7 @@
 
     <physician  id = "phy123">
         <name>Jahmna</name>
-        <speciality>GP</speciality>
+        <specialty>GP</specialty>
     </physician>
 
     <employee id ="emp123">
